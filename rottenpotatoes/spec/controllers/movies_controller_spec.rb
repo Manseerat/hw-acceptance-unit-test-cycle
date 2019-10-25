@@ -61,36 +61,6 @@ describe 'GET index' do
     end
   end
 
-  describe 'GET #show' do
-    let!(:movie) { FactoryBot.create(:movie) }
-    before(:each) do
-      get :show, id: movie.id
-    end
-
-    it 'should find the movie' do
-      expect(assigns(:movie)).to eql(movie)
-    end
-
-    it 'should render the show template' do
-      expect(response).to render_template('show')
-    end
-  end
-
-  describe 'GET #edit' do
-    let!(:movie) { FactoryBot.create(:movie) }
-    before do
-      get :edit, id: movie.id
-    end
-
-    it 'should find the movie' do
-      expect(assigns(:movie)).to eql(movie)
-    end
-
-    it 'should render the edit template' do
-      expect(response).to render_template('edit')
-    end
-  end
-
   describe 'PUT #update' do
     let(:movie1) { FactoryBot.create(:movie) }
     before(:each) do
@@ -107,17 +77,4 @@ describe 'GET index' do
     end
   end
 
-  describe 'DELETE #destroy' do
-    let!(:movie1) { FactoryBot.create(:movie) }
-
-    it 'destroys a movie' do
-      expect { delete :destroy, id: movie1.id
-      }.to change(Movie, :count).by(-1)
-    end
-
-    it 'redirects to movies#index after destroy' do
-      delete :destroy, id: movie1.id
-      expect(response).to redirect_to(movies_path)
-    end
-  end
 end
